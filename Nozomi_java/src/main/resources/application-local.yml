@@ -1,0 +1,47 @@
+server:
+  port: 8080
+  address: localhost
+spring:
+  rabbitmq:
+    addresses: 43.142.32.223:5673
+    username: hiiro
+    password: 136601
+    virtual-host: /test
+  #  username: guest
+  #  password: guest
+  #  virtual-host: /
+  redis:
+    database: 0
+    host: 149.88.95.15
+    password: 1E6Y01CCCp
+    #    host: 127.0.0.1
+    port: 6379
+    pool:
+      max-idle: 16
+      max-active: 32
+      min-idle: 8
+      timeout: 3000
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gp_db?useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true&serverTimezone=UTC
+    username: root
+    password: 136601
+  jwt:
+    config:
+      key: Vinalla
+      ttl: 3600000
+
+  # ???
+  task:
+    pool:
+      corePoolSize: 2 # ?????/???
+      maxPoolSize: 3
+      keepAliveSeconds: 60  #?????TTL
+      queueCapacity: 20 # ????
+  minio:
+    endpoint: http://149.88.95.15:9000 #Minio??????
+    bucketName: image #?????
+    accessKey: mE33IHw8mnmZZV52mOJB #???key
+    secretKey: xYN0duk37uwTK4LAcGGCxiQ21SIDCjsts2nmuqrg #?????
+
+
