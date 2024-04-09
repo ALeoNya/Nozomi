@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("K_resource")
+@TableName("g_resource")
 public class Resource {
 
     @TableId(value = "id", type = IdType.AUTO)

@@ -73,11 +73,11 @@ public class InitRedis {
                 .forEach(resource -> redisService.cacheValue(KEY_RESOURCE_LIST, resource.getId(), resource, 36000));
 
         // 文章列表
-        QueryWrapper<Car> wrapper = new QueryWrapper<>();
-        wrapper.eq("is_delete",0);
-        carMapper.selectList(wrapper)
-                .stream()
-                .forEach(articles -> redisService.cacheValue(KEY_ARTICLE_LIST, articles.getId(), articles, 36000));
+//        QueryWrapper<Car> wrapper = new QueryWrapper<>();
+//        wrapper.eq("is_delete",0);
+//        carMapper.selectList(wrapper)
+//                .stream()
+//                .forEach(articles -> redisService.cacheValue(KEY_ARTICLE_LIST, articles.getId(), articles, 36000));
 
 
         // 文章回收站列表

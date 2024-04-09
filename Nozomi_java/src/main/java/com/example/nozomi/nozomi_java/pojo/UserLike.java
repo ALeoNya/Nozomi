@@ -12,14 +12,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("g_role_resource")
-public class RoleResource {
-
+@TableName("g_user_like")
+public class UserLike {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private Integer roleId;
+    private Integer userId;
 
-    private Integer resourceId;
+    private Integer carId;
 
+    private boolean liked;
 }

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("K_user_role")
+@TableName("g_user_role")
 public class UserRole {
 
     @TableId(value = "id", type = IdType.AUTO)

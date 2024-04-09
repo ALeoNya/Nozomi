@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface UserAuthMapper extends BaseMapper<UserAuth> {
-    @Update("alter table `kotori`.`k_user_auth` auto_increment = 1")
+    @Update("alter table `gp_db`.`g_user_auth` auto_increment = 1")
     void autoIncrement();
 }

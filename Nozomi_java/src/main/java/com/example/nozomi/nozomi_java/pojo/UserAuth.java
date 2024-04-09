@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("K_user_auth")
+@TableName("g_user_auth")
 public class UserAuth implements Serializable {
 
     @TableId(value = "id", type = IdType.AUTO)

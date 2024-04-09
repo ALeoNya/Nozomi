@@ -9,9 +9,9 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface UserRoleMapper extends BaseMapper<UserRole> {
-    @Select("SELECT * FROM k_user_role WHERE user_id = #{userId}")
+    @Select("SELECT * FROM g_user_role WHERE user_id = #{userId}")
     UserRole selectByUserId(@Param("userId") int userId);
 
-    @Update("alter table `kotori`.`k_user_role` auto_increment = 1")
+    @Update("alter table `gp_db`.`g_user_role` auto_increment = 1")
     void autoIncrement();
 }

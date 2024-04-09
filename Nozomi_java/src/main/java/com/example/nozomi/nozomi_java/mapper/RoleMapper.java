@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface RoleMapper extends BaseMapper<Role> {
-    @Update("alter table `kotori`.`k_role` auto_increment = 1")
+    @Update("alter table `gp_db`.`g_role` auto_increment = 1")
     void autoIncrement();
 }

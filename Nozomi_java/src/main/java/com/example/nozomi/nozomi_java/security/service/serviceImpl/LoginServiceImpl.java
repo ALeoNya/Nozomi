@@ -61,6 +61,7 @@ public class LoginServiceImpl implements LoginService {
             map.put("userId",userId);
             return new ResponseDTO(417,"欢迎回来,铁御",map);
         } catch (AuthenticationException e) {
+            System.out.println(e);
             return new ResponseDTO(416,"任务代号4-1-7","请检查你的账号或密码...登录失败");
         }
     }
