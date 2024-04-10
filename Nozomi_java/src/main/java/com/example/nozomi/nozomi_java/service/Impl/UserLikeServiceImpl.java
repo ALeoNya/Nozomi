@@ -23,23 +23,19 @@ public class UserLikeServiceImpl implements UserLikeService {
                 userLikeMapper.insert(userLike);
                 return "新建已点赞关系";
             }
-            // 存在但是取消点赞状态
-            else if (result != null && result.isLiked() == false) {
-                userLikeMapper.toLike(userLike);
-                return "更新状态为已点赞";
-            }
-            // 存在但是已点赞状态
-            else if (result != null && result.isLiked() == true) {
-                userLikeMapper.toUnLike(userLike);
-                return "更新状态为取消点赞";
+            else {
+                if (result.isLiked()) {
+                    userLikeMapper.toUnLike(result);
+                    return "更新状态为取消点赞";
+                }
+                else {
+                    userLikeMapper.toLike(  result);
+                    return "更新状态为已点赞";
+                }
             }
         } catch (RuntimeException e) {
             System.out.println(e);
             return "出现未知错误";
         }
-        return "hii";
     }
-
-
-
 }

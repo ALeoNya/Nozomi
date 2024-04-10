@@ -13,11 +13,6 @@ import java.util.List;
 public class CarServiceImpl implements CarService {
     @Resource
     private CarMapper carMapper;
-    /**
-     * 增加
-     * @param car
-     * @return
-     */
     @Override
     public boolean addCar(Car car) {
         try {
@@ -31,6 +26,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    // 真删除
     public boolean deleteCar(int id) {
         try {
             carMapper.deleteById(id);
@@ -41,8 +37,9 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    // 获取未售出的车辆列表
     public List<Car> carList() {
-        return carMapper.selectList(null);
+        return carMapper.getSellingCar();
     }
 
     @Override
@@ -55,12 +52,7 @@ public class CarServiceImpl implements CarService {
         }
     }
 
-
-
-    // TODO 1.实现点赞功能，2.记录观看人数及其观看时间
-    // 实现点赞
-    //拼接key  userId:carId  点赞value=1 取消点赞value=0 写入redis
-    //定时任务，2h将redis点赞的key写入DB，判断是否在DB已存在点赞关系，改变点赞字段;
+    // TODO 实现寄售
 
 
     //TODO 实现季度（出库）价格记录
