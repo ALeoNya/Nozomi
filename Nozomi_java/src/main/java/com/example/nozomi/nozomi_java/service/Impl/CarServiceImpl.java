@@ -52,6 +52,11 @@ public class CarServiceImpl implements CarService {
         }
     }
 
+    @Override
+    public List<Car> getCarByUserId(int userId) {
+        return carMapper.getCarListByUserId(userId);
+    }
+
     // TODO 实现寄售
 
 

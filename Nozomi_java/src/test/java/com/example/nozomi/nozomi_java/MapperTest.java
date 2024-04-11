@@ -32,7 +32,10 @@ public class MapperTest {
     CarMapper carMapper;
     @Test
     public void carMapper() {
-        System.out.println(carMapper.getSellingCar());
+//        System.out.println(carMapper.getSellingCar());
+//        System.out.println(carMapper.getCarById(1));
+//        System.out.println(carMapper.getCarListByMerchantId(1));
+
     }
 
     /**
@@ -42,6 +45,7 @@ public class MapperTest {
     UserCarMapper userCarMapper;
     @Test
     public void userCarMapper() {
-        System.out.println(userCarMapper.getCarIdByUserId(1));
+//        System.out.println(userCarMapper.getCarIdByUserId(1));
+        userCarMapper.changeMerchantStatus(5);
     }
 }

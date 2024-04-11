@@ -21,6 +21,9 @@ public class UserCar {
 
     private Integer user_id;
 
-    private Integer status;
+    private Integer merchant_id;
 
+    private boolean merchant_status;
+
+    private boolean saleType;
 }

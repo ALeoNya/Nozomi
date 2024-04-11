@@ -9,4 +9,6 @@ public interface CarService {
     boolean deleteCar(int id);
     List<Car> carList();
     boolean updateCar(Car car);
+
+    List<Car> getCarByUserId(int userId);
 }
