@@ -17,13 +17,13 @@ public class UserCar {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private Integer car_id;
+    private Integer carId;
 
-    private Integer user_id;
+    private Integer userId;
 
-    private Integer merchant_id;
+    private Integer merchantId;
 
-    private boolean merchant_status;
+    private boolean merchantStatus;
 
     private boolean saleType;
 }

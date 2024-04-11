@@ -16,19 +16,17 @@ public interface UserCarMapper extends BaseMapper<UserCar> {
 
     // 个人对指定商户发起寄售请求(添加指定商家的id
     @Update("update `gp_db`.`g_user_car` " +
-            "   set merchant_id = #{merchantId}, merchant_status = 1, sale_type = 1 " +
+            "   set merchant_id = #{merchantId}, merchant_status = 0, sale_type = 1 " +
             "where car_id = #{carId}")
     boolean changeSaleTypeByCarId(UserCar userCar);
 
-    // 商户通过寄售审核，修改merchant_status
+    // 商户通过寄售协议，修改merchant_status
     @Update("update  `gp_db`.`g_user_car` " +
-            "   set merchant_status = 1 , sale_type = 1 " +
-            "where id = #{carId}")
-    void changeMerchantStatus(int carId);
+            "   set merchant_status = 1 " +
+            "where car_id = #{carId} ")
+    void passMerchantStatus(int carId);
 
     // 用户取消寄售协议
-//    @Update("update  `gp_db`.`g_user_car` " +
-//            "   set merchant_status = 0 , sale_type = 1 , merchant_id = 0" +
-//            "where id = #{carId}")
-//    void cancelMerchantStatus(int carId);
+    @Update("update  `gp_db`.`g_user_car` set merchant_id = null, merchant_status = 0 , sale_type = 0 where car_id = #{carId}")
+    void cancelMerchantStatus(int carId);
 }

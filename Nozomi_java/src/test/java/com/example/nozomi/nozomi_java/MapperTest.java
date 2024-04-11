@@ -46,6 +46,7 @@ public class MapperTest {
     @Test
     public void userCarMapper() {
 //        System.out.println(userCarMapper.getCarIdByUserId(1));
-        userCarMapper.changeMerchantStatus(5);
+//        userCarMapper.changeMerchantStatus(5);
+        userCarMapper.cancelMerchantStatus(5);
     }
 }
