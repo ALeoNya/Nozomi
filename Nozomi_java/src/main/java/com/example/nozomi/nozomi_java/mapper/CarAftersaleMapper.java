@@ -2,15 +2,16 @@ package com.example.nozomi.nozomi_java.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.nozomi.nozomi_java.pojo.Book;
+import com.example.nozomi.nozomi_java.pojo.CarAftersale;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+
 import java.util.List;
 
 @Mapper
-public interface BookMapper extends BaseMapper<Book> {
-    @Update("alter table `gp_db`.`g_book` auto_increment = 1")
+public interface CarAftersaleMapper extends BaseMapper<CarAftersale> {
+    @Update("alter table g_car_aftersale auto_increment = 1")
     void autoIncrement();
-    @Select("SELECT * FROM g_book WHERE user_id = #{userId}")
-    List<Book> SelectReservationByUserId(int userId);
+
 }
