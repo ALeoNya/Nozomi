@@ -28,7 +28,6 @@ public class MinioController {
         String name = file.getOriginalFilename();
         String type = file.getContentType();
         minioUtil.upload(file, "image");
-        System.out.println("the image name is " + name);
         Image image = new Image();
         image.setUrl("http://149.88.95.15:9000/image/"+name);
         image.setDesc(name);

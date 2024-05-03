@@ -6,44 +6,46 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder  //构造器,提供一个构造器方法
 @Data  //提供类的get、set、equals、hashCode、canEqual、toString方法
 @NoArgsConstructor  //生成无参构造方法
 @AllArgsConstructor  //生成全参数的构造器
-@TableName("g_car")
-public class Car {
+@TableName("g_car_info")
+public class CarInfo {
     @TableId(value = "id", type = IdType.AUTO)  //主键标识
     private Integer id;
 
-    private Integer infoId;
+    private String licensePic;
 
-    private String carCover;
+    private String carCode;
 
-    private String carTitle;
+    private String carBrand;
 
-    private String carAbstract;
+    private String carSeries;
 
-    private String carContent;
+    private String carModel;
 
-    private String price;
+    private boolean carGear;
 
-    private String sellingPrice;
+    private String carDisplacement;
 
-    private Integer isTop;
+    private String carColor;
 
-    private Integer isFeatured;
+    private int registrationTimes;
 
-    private Integer isDelete;
+    private int insureTimes;
 
-    private Integer sellingType;
+    private int kilometre;
+
+    private int sellingPrice;
+
+    private LocalDateTime firstRegistration;
 
     @TableField(fill = FieldFill.INSERT)  //插入时自动填充日期（
-    private LocalDate createTime;
+    private LocalDateTime createTime;
 
     @TableField(fill = FieldFill.UPDATE)  //更新时自动填充日期（
-    private LocalDate updateTime;
+    private LocalDateTime updateTime;
 }

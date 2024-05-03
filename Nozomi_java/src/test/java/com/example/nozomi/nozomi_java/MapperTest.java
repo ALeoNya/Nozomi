@@ -1,13 +1,14 @@
 package com.example.nozomi.nozomi_java;
 
-import com.example.nozomi.nozomi_java.mapper.CarMapper;
-import com.example.nozomi.nozomi_java.mapper.UserCarMapper;
-import com.example.nozomi.nozomi_java.mapper.UserLikeMapper;
+import com.example.nozomi.nozomi_java.mapper.*;
+import com.example.nozomi.nozomi_java.pojo.CarInfo;
+import com.example.nozomi.nozomi_java.pojo.DTO.CarSelectDTO;
 import com.example.nozomi.nozomi_java.pojo.UserLike;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
 
 @SpringBootTest
 public class MapperTest {
@@ -32,10 +33,26 @@ public class MapperTest {
     CarMapper carMapper;
     @Test
     public void carMapper() {
-//        System.out.println(carMapper.getSellingCar());
-//        System.out.println(carMapper.getCarById(1));
-//        System.out.println(carMapper.getCarListByMerchantId(1));
+        CarSelectDTO dto = new CarSelectDTO();
+//        dto.setEndTime(LocalDate.of(2024, 1, 1));
+//        dto.setStartTime(LocalDate.of(2023, 1, 1));
+        dto.setUserId(1);
+        System.out.println(carMapper.getCarByCondition(dto));
+    }
 
+    /**
+     *  CarInfoMapper TEST
+     */
+    @Resource
+    CarInfoMapper carInfoMapper;
+    @Test
+    public void carInfoMapper() {
+        CarInfo carInfo = new CarInfo();
+        carInfo.setId(2);
+        carInfo.setCarBrand("阿斯顿马丁");
+        carInfoMapper.updateById(carInfo);
+//        carInfoMapper.autoIncrement();
+//        carInfoMapper.insert(carInfo);
     }
 
     /**
@@ -45,8 +62,13 @@ public class MapperTest {
     UserCarMapper userCarMapper;
     @Test
     public void userCarMapper() {
-//        System.out.println(userCarMapper.getCarIdByUserId(1));
-//        userCarMapper.changeMerchantStatus(5);
         userCarMapper.cancelMerchantStatus(5);
+    }
+
+    @Resource
+    RoleResourceMapper roleResourceMapper;
+    @Test
+    public void roleResourceMapper() {
+        System.out.println(roleResourceMapper.listPermsByUserId(1));
     }
 }

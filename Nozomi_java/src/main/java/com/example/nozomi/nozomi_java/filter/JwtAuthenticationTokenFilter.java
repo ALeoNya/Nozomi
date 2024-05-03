@@ -2,7 +2,7 @@ package com.example.nozomi.nozomi_java.filter;
 
 import com.example.nozomi.nozomi_java.mapper.RoleResourceMapper;
 import com.example.nozomi.nozomi_java.mapper.UserAuthMapper;
-import com.example.nozomi.nozomi_java.pojo.LoginUser;
+import com.example.nozomi.nozomi_java.pojo.DTO.UserDetailsDTO;
 import com.example.nozomi.nozomi_java.util.jwt.JwtUtil;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +22,7 @@ import java.util.Map;
 
 /**
  * JWT过滤器
+ * 位置在security之前？
  */
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
@@ -43,17 +44,15 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         int userid;
         Map<String, Object> map = new HashMap<>();
         try {
-            //解析token
             Claims claims = JwtUtil.parseJWT(token);
+            //获取id
             userid = Integer.parseInt(claims.getId());
-            //TODO 从redis中获取用户信息
-
             // 将获取的权限信息封装到Authentication中
             List<String> permissionKeyList =  roleResourceMapper.listPermsByUserId(userid);
             System.out.println("权限信息为：" + permissionKeyList);
-            LoginUser loginUser = new LoginUser(userAuthMapper.selectById(userid),permissionKeyList);
+            UserDetailsDTO userDetailsDTO = new UserDetailsDTO(userAuthMapper.selectById(userid),permissionKeyList);
             UsernamePasswordAuthenticationToken authenticationToken =
-                    new UsernamePasswordAuthenticationToken(loginUser,null,loginUser.getAuthorities());
+                    new UsernamePasswordAuthenticationToken(userDetailsDTO,null, userDetailsDTO.getAuthorities());
             //存入SecurityContextHolder
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             //放行
@@ -92,4 +91,3 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         }
     }
 }
-

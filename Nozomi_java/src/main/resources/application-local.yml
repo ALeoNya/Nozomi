@@ -1,20 +1,21 @@
 server:
   port: 8080
   address: localhost
+
 spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB        # 设置单个文件最大大小为10MB
+      max-request-size: 100MB
   rabbitmq:
     addresses: 43.142.32.223:5673
     username: hiiro
     password: 136601
     virtual-host: /test
-  #  username: guest
-  #  password: guest
-  #  virtual-host: /
   redis:
     database: 0
-    host: 149.88.95.15
+    host: 159.75.186.217
     password: 1E6Y01CCCp
-    #    host: 127.0.0.1
     port: 6379
     pool:
       max-idle: 16
@@ -31,17 +32,17 @@ spring:
       key: Vinalla
       ttl: 3600000
 
-  # ???
+  # 多线程
   task:
     pool:
-      corePoolSize: 2 # ?????/???
+      corePoolSize: 2 # 线程池核心数量
       maxPoolSize: 3
-      keepAliveSeconds: 60  #?????TTL
-      queueCapacity: 20 # ????
+      keepAliveSeconds: 60  #存活时间
+      queueCapacity: 20
   minio:
-    endpoint: http://149.88.95.15:9000 #Minio??????
-    bucketName: image #?????
-    accessKey: mE33IHw8mnmZZV52mOJB #???key
-    secretKey: xYN0duk37uwTK4LAcGGCxiQ21SIDCjsts2nmuqrg #?????
+    endpoint: http://149.88.95.15:9000 # 目标点
+    bucketName: image # 桶名
+    accessKey: mE33IHw8mnmZZV52mOJB #通行key
+    secretKey: xYN0duk37uwTK4LAcGGCxiQ21SIDCjsts2nmuqrg #安全key
 
 

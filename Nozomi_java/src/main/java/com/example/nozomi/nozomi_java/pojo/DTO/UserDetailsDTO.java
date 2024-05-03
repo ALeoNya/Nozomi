@@ -1,6 +1,7 @@
-package com.example.nozomi.nozomi_java.pojo;
+package com.example.nozomi.nozomi_java.pojo.DTO;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.example.nozomi.nozomi_java.pojo.UserAuth;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,12 +16,21 @@ import java.util.stream.Collectors;
 @Data
 @NoArgsConstructor
 @Component
-// 重写UserDetails中的接口
-public class LoginUser implements UserDetails {
+/**
+ * UserDetails用于封装用户信息，包括以下方法：
+ * getAuthorities()
+ * getPassword()
+ * getPassword()
+ * isAccountNonExpired()
+ * isAccountNonLocked()
+ * isCredentialsNonExpired()
+ * isEnabled()
+ */
+public class UserDetailsDTO implements UserDetails {
     private UserAuth user;
     private List<String> permissions;  //存储权限信息
 
-    public LoginUser(UserAuth user, List<String> permissions) {
+    public UserDetailsDTO(UserAuth user, List<String> permissions) {
         this.user = user;
         this.permissions = permissions;
     }
@@ -33,11 +43,11 @@ public class LoginUser implements UserDetails {
         if(authorities!=null){
             return authorities;
         }
-        //把permissions中字符串类型的权限信息转换成GrantedAuthority对象存入authorities中
+        // 把permissions中字符串类型的权限信息转换成GrantedAuthority对象存入authorities中
+        // 在后台查询到的权限为空时，自动在权限组中填入登录接口的权限
         authorities = permissions.stream().
                 map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
-//        System.out.println(authorities);
         return authorities;
     }
 

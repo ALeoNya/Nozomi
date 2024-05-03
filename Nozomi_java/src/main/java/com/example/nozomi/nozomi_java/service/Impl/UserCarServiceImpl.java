@@ -11,6 +11,12 @@ import java.util.List;
 public class UserCarServiceImpl implements UserCarService {
     @Resource
     private UserCarMapper userCarMapper;
+
+    @Override
+    public boolean addUserCar(UserCar userCar) {
+        return false;
+    }
+
     @Override
     public List<Integer> getCarIdByUserId(int userId) {
         return userCarMapper.getCarIdByUserId(userId);
